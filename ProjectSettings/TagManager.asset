@@ -56,9 +56,6 @@ TagManager:
   - name: Inspection
     uniqueID: 2100288451
     locked: 0
-  - name: Handbook
-    uniqueID: 3777923107
-    locked: 0
   - name: Passport
     uniqueID: 1925011621
     locked: 0
@@ -73,6 +70,9 @@ TagManager:
     locked: 0
   - name: VisaImage
     uniqueID: 2363826401
+    locked: 0
+  - name: Handbook
+    uniqueID: 3777923107
     locked: 0
   - name: Text
     uniqueID: 1417752707

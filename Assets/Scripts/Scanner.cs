@@ -15,7 +15,8 @@ public class Scanner : MonoBehaviour
     }
 
     void OnMouseOver() {
-        if (Input.GetMouseButtonDown(0)) {
+        Touch input = Input.GetTouch(0);
+        if (input.tapCount == 1 && input.phase == TouchPhase.Ended) {
             switch (state) {
                 case State.Down:
                     state = State.MovingUp;
@@ -38,13 +39,13 @@ public class Scanner : MonoBehaviour
     {
         switch (state) {
             case State.MovingDown:
-                if (transform.position.y < -2.27f) {
+                if (transform.position.y < -2.55f) {
                     state = State.Down;
                 }
-                transform.position = Vector3.MoveTowards(transform.position, new Vector3(-1.24f, -2.28f, 0.0f), 6.0f * Time.deltaTime);
+                transform.position = Vector3.MoveTowards(transform.position, new Vector3(-1.24f, -2.55f, 0.0f), 6.0f * Time.deltaTime);
                 break;
             case State.MovingUp:
-                if (transform.position.y > -0.72f) {
+                if (transform.position.y > -0.9f) {
                     state = State.Up;
                 }
                 transform.position = Vector3.MoveTowards(transform.position, new Vector3(-1.24f, 0.72f, 0.0f), 6.0f * Time.deltaTime);

@@ -103,7 +103,7 @@ public class Controller : MonoBehaviour
             person.personData.ID = -1;
 
         person.NewPerson();
-        person.transform.position = new Vector3(-3.2f, 0.25f, 0.0f);
+        person.transform.position = new Vector3(-4f, 0.25f, 0.0f);
         float randomScale = Random.Range(1.45f, 1.65f);
         float squashness = Random.Range(0.9f, 1.1f);
         person.transform.localScale = new Vector3(randomScale * squashness, randomScale, 1.0f);
@@ -280,8 +280,8 @@ public class Controller : MonoBehaviour
                 if (Mathf.Abs(0.75f - visa.transform.position.y) < 0.1f || (person.personData.nationality == 3)) {
                     if (Mathf.Abs(0.8f - visa.transform.position.x) < 0.1f || (person.personData.nationality == 3)) {
                         state = State.PersonLeaving;
-                        passport.transform.position = new Vector3(-2.6f, 0.0f, -0.2f);
-                        visa.transform.position = new Vector3(-2.6f, 0.0f, -0.2f);
+                        passport.transform.position = new Vector3(-4.0f, 0.0f, -0.2f);
+                        visa.transform.position = new Vector3(-4.0f, 0.0f, -0.2f);
                         exitSound.Play();
                         if (!personDirection) {
                             person.Flip();
@@ -298,7 +298,7 @@ public class Controller : MonoBehaviour
         float newX = person.transform.position.x + mDirection * Time.deltaTime;
         person.transform.position = new Vector3(newX, 0.25f + walkGraph.Evaluate(person.transform.position.x) * 0.1f, 0.0f);
 
-        if (Mathf.Abs(person.transform.position.x) > 3.2f) {
+        if (Mathf.Abs(person.transform.position.x) > 3.6f) {
             if (!personDirection)
                 person.Flip();
             

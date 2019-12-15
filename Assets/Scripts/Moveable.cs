@@ -9,6 +9,8 @@ public class Moveable : MonoBehaviour
     Vector3 n;
     Vector3 a;
 
+    protected Touch input;
+
     public bool mouseOn = false;
 
     // Start is called before the first frame update
@@ -20,11 +22,9 @@ public class Moveable : MonoBehaviour
     // Update is called once per frame
     protected void Update()
     {
-        if (mouseOn) {
-            if (Input.GetMouseButtonUp(0)) {
-                mouseOn = false;
-            }
-            n = _camera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0.0f));
+        input = Input.GetTouch(0);
+        if (mouseOn && input.phase == TouchPhase.Moved) {
+            n = _camera.ScreenToWorldPoint(new Vector3(input.position.x, input.position.y, 0.0f));
             n.x = Mathf.Clamp(n.x, -2.0f, 2.0f);
             n.y = Mathf.Clamp(n.y, -1.5f, 1.5f);
             n.x += a.x;
@@ -34,9 +34,13 @@ public class Moveable : MonoBehaviour
     }
 
     protected void OnMouseOver() {
-        if (Input.GetMouseButtonDown(0)) {
+        input = Input.GetTouch(0);
+        if (input.phase == TouchPhase.Began) {
             mouseOn = true;
-            a = transform.position - _camera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0.0f));
+            a = transform.position - _camera.ScreenToWorldPoint(new Vector3(input.position.x, input.position.y, 0.0f));
+        }
+        if (input.phase == TouchPhase.Ended) {
+            mouseOn = false;
         }
     }
 

@@ -63,7 +63,8 @@ public class Visa : Moveable
     }
 
     new void OnMouseOver() {
-        if (Input.GetMouseButtonDown(1)) {
+        input = Input.GetTouch(0);
+        if (input.tapCount == 2 && input.phase == TouchPhase.Ended) {
             largeVisa.SetActive(!largeVisa.activeInHierarchy); 
             if (largeVisa.activeInHierarchy) {
                 open.Play();

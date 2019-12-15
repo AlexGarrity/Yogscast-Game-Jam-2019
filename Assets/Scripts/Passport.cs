@@ -56,7 +56,8 @@ public class Passport : Moveable
     }
 
     new void OnMouseOver() {
-        if (Input.GetMouseButtonDown(1)) {
+        input = Input.GetTouch(0);
+        if (input.tapCount == 2 && input.phase == TouchPhase.Ended) {
             largePassport.SetActive(!largePassport.activeInHierarchy); 
             if (largePassport.activeInHierarchy) {
                 _collider.size = new Vector2(1.2f, 1.5f);
